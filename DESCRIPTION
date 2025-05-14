@@ -1,0 +1,28 @@
+Package: Variant
+Title: Set of S4 Classes for Genomic Variants
+Version: 0.99.0
+URL: https://github.com/GautieriGiuseppe/Variant
+BugReports: https://github.com/GautieriGiuseppe/Variant/issues
+Authors@R: 
+    person("Giuseppe", "Gautieri", , "giuseppe.gautieri00@gmail.com",
+    role = c("aut", "cre"))
+Description: Provides S4 classes for genomic variant types.
+License: GPL-2
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Imports:
+  GenomicRanges,
+  IRanges,
+  methods
+Suggests: 
+    knitr,
+    rmarkdown,
+    BiocStyle,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+RoxygenNote: 7.3.2
+Depends: 
+    R (>= 4.4.0)
+biocViews: Infrastructure, Genetics, Sequencing
+Config/testthat/edition: 3
+LazyData: false

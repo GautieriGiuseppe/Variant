@@ -1,0 +1,79 @@
+---
+title: "How to use the Variant Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How-to-use}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+Introduction
+
+The Variant package provides a structured object-oriented approach to represent and manipulate genetic variants using S4 classes.
+
+This vignette demonstrates how to construct variant objects, access and modify their attributes, and utilize class-specific methods.
+
+Load the package
+```{r setup}
+library(Variant)
+library(GenomicRanges)
+
+```
+
+Creating a Variant (SNV) Object
+```{r}
+gr <- GRanges("chr1", IRanges(100, 100), strand = "+")
+snv <- SNV(
+  VariantID = "SNV001",
+  GenomicPos = gr,
+  ReferenceAllele = "A",
+  MutatedAllele = "G",
+  transition = TRUE,
+  Exon = "1",
+  GeneSymbol = "TP53",
+  GeneType = "protein_coding",
+  MutationConsequence = "missense_variant",
+  ClinicalRel = "Pathogenic",
+  EnsemblID = "ENST00000269305",
+  ProteinVariation = "p.Pro34Arg"
+)
+```
+
+Accessing Variant Properties
+```{r}
+VariantID(snv)
+GeneSymbol(snv)
+MutationConsequence(snv)
+```
+
+Modifying Variant Attributes
+```{r}
+GeneSymbol(snv) <- "NEW1"
+Relevance(snv) <- "Likely pathogenic"
+MutatedAllele(snv) <- "T"
+```
+
+Display Variation Summary
+```{r}
+Variation(snv)
+describe(snv)
+```
+
+Using the Example Dataset
+```{r}
+data("example")
+example$snv1
+describe(example$snv1)
+```
+
+Session Info
+```{r}
+sessionInfo()
+```
+
